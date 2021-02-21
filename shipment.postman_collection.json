@@ -1,0 +1,379 @@
+{
+	"info": {
+		"_postman_id": "2bafe390-d8de-4937-9ae8-a362c3680535",
+		"name": "shipment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Missing api-key - 400 Bad Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f__",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments/fedex/FJIEQWFHEIJFHIEWHF12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments",
+						"fedex",
+						"FJIEQWFHEIJFHIEWHF12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Invalid-API-Key - 401-Unauthorized",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f__",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments/fedex/FJIEQWFHEIJFHIEWHF12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments",
+						"fedex",
+						"FJIEQWFHEIJFHIEWHF12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET  Tracking Not Found - 404-Not Found",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments/fedex/FJIEQWFHEIJFHIEWHF123458990",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments",
+						"fedex",
+						"FJIEQWFHEIJFHIEWHF123458990"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Valid - 200",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments/fedex/FJIEQWFHEIJFHIEWHF12345",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments",
+						"fedex",
+						"FJIEQWFHEIJFHIEWHF12345"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Missing api-key - 400 Bad Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"origin\": \"AFG\",\n   \"destination\": \"AGO\",\n   \"trackingNumber\": \"KAFJ253OPASD363423794714IFASDH1234528011\",\n   \"courierCode\": \"FedEx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Invalid-API-Key - 401-Unauthorized",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f__",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"origin\": \"AFG\",\n   \"destination\": \"AGO\",\n   \"trackingNumber\": \"KAFJ253OPASD363423794714IFASDH1234528011\",\n   \"courierCode\": \"FedEx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST empty payload - 400 Bad Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Mandatory fields missing - 400 Bad Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"origin\": \"ABC\",\n   \"trackingNumber\": \"KAFJ253OPASD363423794714IFASDH1234528011123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Duplicate Tracking - 400 Bad Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"origin\": \"AFG\",\n   \"destination\": \"AGO\",\n   \"trackingNumber\": \"KAFJ253OPASD363423794714IFASDH1234528011\",\n   \"courierCode\": \"FedEx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST InValid Courier Code - 400 Bad Request",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"origin\": \"AFG\",\n   \"destination\": \"AGO\",\n   \"trackingNumber\": \"KAFJ253OPASD363423794714IFASDH1234528011123\",\n   \"courierCode\": \"FedEx12\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Valid - 200",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "aftership-api-key",
+						"value": "c603e0db-8072-4766-83bf-cc2166a93d1f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"origin\": \"AFG\",\n   \"destination\": \"AGO\",\n   \"trackingNumber\": \"KAFJ253OPASD363423794714IFASDH1234528011123\",\n   \"courierCode\": \"FedEx\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/afterShip/api/shipments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"afterShip",
+						"api",
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
