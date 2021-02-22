@@ -67,6 +67,7 @@ public class Tracking {
 	 * <p>
 	 * String
 	 */
+	@JsonProperty("tracking_origin_country")
 	private String trackingOriginCountry;
 	/**
 	 * Destination Country of the shipment for a specific courier. Required by some
@@ -75,6 +76,7 @@ public class Tracking {
 	 * <p>
 	 * String
 	 */
+	@JsonProperty("tracking_destination_country")
 	private String trackingDestinationCountry;
 	/**
 	 * Located state of the shipment for a specific courier. Required by some
