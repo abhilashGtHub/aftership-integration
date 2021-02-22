@@ -24,29 +24,6 @@ public class ConverterUtils {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	/**
-	 * convert trackignResp to a simple tracking object
-	 * 
-	 * @param trackingResp
-	 * @return
-	 */
-	public Shipment prepareSimpleTracking(Tracking trackingResp) {
-		log.info("prepareSimpleTracking started >> ClientTrackingResponse: {}", trackingResp);
-		Shipment simpleTracking = new Shipment();
-
-		if (trackingResp != null) {
-			log.debug("prepareSimpleTracking inside trackingResp not null");
-			simpleTracking.setId(trackingResp.getId());
-			simpleTracking.setOrigin(trackingResp.getOriginCountryIso3());
-			simpleTracking.setDestination(trackingResp.getDestinationCountryIso3());
-			simpleTracking.setCurrentStatus(trackingResp.getTag());
-			simpleTracking.setTrackingNumber(trackingResp.getTrackingNumber());
-			simpleTracking.setCourierCode(Couriercode.valueOf(trackingResp.getSlug()));
-		}
-		log.info("prepareSimpleTracking returning simpleTracking: {}",simpleTracking);
-		return simpleTracking;
-	}
-
-	/**
 	 * generates the request paylod for the aftership POST API
 	 * 
 	 * @param shipment
@@ -62,10 +39,10 @@ public class ConverterUtils {
 		Tracking tracking = new Tracking();
 		tracking.setTrackingNumber(shipment.getTrackingNumber());
 		tracking.setOrderId(shipment.getId());
-		tracking.setOriginCountryIso3(shipment.getOrigin());
-		tracking.setDestinationCountryIso3(shipment.getDestination());
+		tracking.setTrackingOriginCountry(shipment.getOrigin());
+		tracking.setTrackingDestinationCountry(shipment.getDestination());
 		if(shipment.getCourierCode() != null) {
-			tracking.setSlug(shipment.getCourierCode().name());
+			tracking.setSlug(shipment.getCourierCode().getCode());
 		}
 		newTracking.setTracking(tracking);
 		log.info("prepareTrackingObj returning trackingPayLoad: {}", newTracking);
@@ -93,11 +70,11 @@ public class ConverterUtils {
 		
 		Shipment shipment = new Shipment();
 		shipment.setId(valueMap.get("id"));
-		shipment.setOrigin(valueMap.get("origin_country_iso3"));
+		shipment.setOrigin(valueMap.get("tracking_origin_country"));
 		shipment.setTrackingNumber(valueMap.get("tracking_number"));
 		shipment.setCourierCode(Couriercode.valueOfCode(valueMap.get("slug")));
-		shipment.setCurrentStatus(valueMap.get(valueMap.get("tag")));
-		shipment.setDestination(valueMap.get("destination_country_iso3"));
+		shipment.setCurrentStatus(valueMap.get("tag"));
+		shipment.setDestination(valueMap.get("tracking_destination_country"));
 		log.info("prepareShipmentFromResponse returning shipment: {}", shipment);
 		return shipment;
 	}
